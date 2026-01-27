@@ -6,14 +6,19 @@
     --text-main: #2D3436;
     --text-light: #636E72;
     --card-bg: #FFFFFF;
-    --shadow: 0 10px 20px rgba(0,0,0,0.08);
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     --radius: 16px;
     --font-family: 'Outfit', sans-serif;
-    
+
     /* Level Colors */
-    --level-1: #FF7675; /* Beginner - Redish */
-    --level-2: #FDCB6E; /* Intermediate - Yellowish */
-    --level-3: #55EFC4; /* Master - Greenish */
+    --level-1: #FF7675;
+    /* Beginner - Redish */
+    --level-2: #FDCB6E;
+    /* Intermediate - Yellowish */
+    --level-3: #55EFC4;
+    /* Master - Greenish */
+    --level-skip: #b2bec3;
+    /* Skipped - Grey */
 }
 
 * {
@@ -76,8 +81,15 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(30px, -30px); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -30px);
+    }
 }
 
 /* Container */
@@ -188,14 +200,14 @@ p {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
 
 .tab-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .tab-btn.active {
@@ -212,7 +224,7 @@ p {
 .tab-btn[data-subject="maths"].active {
     background: var(--accent);
     color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 8px 15px rgba(78, 205, 196, 0.3);
 }
 
@@ -237,7 +249,7 @@ p {
 
 .chapter-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .chapter-info {
@@ -309,9 +321,22 @@ p {
 }
 
 /* Active States */
-.chapter-card[data-level="1"] { border-left-color: var(--level-1); }
-.chapter-card[data-level="2"] { border-left-color: var(--level-2); }
-.chapter-card[data-level="3"] { border-left-color: var(--level-3); }
+.chapter-card[data-level="1"] {
+    border-left-color: var(--level-1);
+}
+
+.chapter-card[data-level="2"] {
+    border-left-color: var(--level-2);
+}
+
+.chapter-card[data-level="3"] {
+    border-left-color: var(--level-3);
+}
+
+.chapter-card[data-level="-1"] {
+    border-left-color: var(--level-skip);
+    opacity: 0.8;
+}
 
 .fam-btn.active {
     transform: scale(1.1);
@@ -319,9 +344,25 @@ p {
     color: white;
 }
 
-.fam-btn[data-val="1"].active { background: var(--level-1); box-shadow: 0 4px 10px rgba(255, 118, 117, 0.4); }
-.fam-btn[data-val="2"].active { background: var(--level-2); box-shadow: 0 4px 10px rgba(253, 203, 110, 0.4); }
-.fam-btn[data-val="3"].active { background: var(--level-3); box-shadow: 0 4px 10px rgba(85, 239, 196, 0.4); }
+.fam-btn[data-val="1"].active {
+    background: var(--level-1);
+    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.4);
+}
+
+.fam-btn[data-val="2"].active {
+    background: var(--level-2);
+    box-shadow: 0 4px 10px rgba(253, 203, 110, 0.4);
+}
+
+.fam-btn[data-val="3"].active {
+    background: var(--level-3);
+    box-shadow: 0 4px 10px rgba(85, 239, 196, 0.4);
+}
+
+.fam-btn[data-val="-1"].active {
+    background: var(--level-skip);
+    box-shadow: 0 4px 10px rgba(178, 190, 195, 0.4);
+}
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -330,10 +371,12 @@ p {
         align-items: flex-start;
         gap: 15px;
     }
-    
+
     .familiarity-controls {
         align-self: flex-end;
     }
 
-    h1 { font-size: 2rem; }
+    h1 {
+        font-size: 2rem;
+    }
 }
