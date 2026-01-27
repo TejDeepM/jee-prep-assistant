@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="chapter-status" id="status-${index}">${statusLabel}</div>
                 </div>
                 <div class="familiarity-controls">
-                <button class="fam-btn ${level === -1 ? 'active' : ''}" data-val="-1" data-tooltip="Skip">0</button>
+                    <button class="fam-btn ${level === -1 ? 'active' : ''}" data-val="-1" data-tooltip="Skip">0</button>
                     <button class="fam-btn ${level === 1 ? 'active' : ''}" data-val="1" data-tooltip="Familiar">1</button>
                     <button class="fam-btn ${level === 2 ? 'active' : ''}" data-val="2" data-tooltip="Confident">2</button>
                     <button class="fam-btn ${level === 3 ? 'active' : ''}" data-val="3" data-tooltip="Mastered">3</button>
