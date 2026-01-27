@@ -56,8 +56,6 @@ const syllabusData = {
         "Three-Dimensional Geometry",
         "Vector Algebra",
         "Statistics and Probability",
-        "Trigonometry",
-        "Mathematical Induction",
-        "Mathematical Reasoning"
+        "Trigonometry"
     ]
 };
