@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.dataset.level = level; // For CSS border coloring
 
             // Status label
-            let statusLabel = 'Not Started ⚪️';
-            if (level === 1) statusLabel = 'Familiar 😐';
-            if (level === 2) statusLabel = 'Confident 🙂';
-            if (level === 3) statusLabel = 'Mastered 🤩';
-            if (level === -1) statusLabel = 'Skipped ⛔️';
+            let statusLabel = 'Not Started';
+            if (level === 1) statusLabel = 'Familiar';
+            if (level === 2) statusLabel = 'Confident';
+            if (level === 3) statusLabel = 'Mastered';
+            if (level === -1) statusLabel = 'Skipped';
 
             card.innerHTML = `
                 <div class="chapter-info">

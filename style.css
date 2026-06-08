@@ -1,24 +1,25 @@
 :root {
-    --primary: #6C63FF;
-    --secondary: #FF6B6B;
-    --accent: #4ECDC4;
-    --bg-color: #F7F9FC;
-    --text-main: #2D3436;
-    --text-light: #636E72;
-    --card-bg: #FFFFFF;
-    --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    --radius: 16px;
-    --font-family: 'Outfit', sans-serif;
+    --primary: #2563eb;
+    --secondary: #475569;
+    --accent: #3b82f6;
+    --bg-color: #f8fafc;
+    --text-main: #0f172a;
+    --text-light: #64748b;
+    --card-bg: #ffffff;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --border: 1px solid #e2e8f0;
+    --radius: 8px;
+    --font-family: 'Inter', sans-serif;
 
-    /* Level Colors */
-    --level-1: #FF7675;
-    /* Beginner - Redish */
-    --level-2: #FDCB6E;
-    /* Intermediate - Yellowish */
-    --level-3: #55EFC4;
-    /* Master - Greenish */
-    --level-skip: #b2bec3;
-    /* Skipped - Grey */
+    /* Level Colors (Professional representation: Amber, Blue, Green, Slate) */
+    --level-1: #d97706;       /* Familiar */
+    --level-1-bg: #fef3c7;
+    --level-2: #2563eb;       /* Confident */
+    --level-2-bg: #dbeafe;
+    --level-3: #16a34a;       /* Mastered */
+    --level-3-bg: #dcfce7;
+    --level-skip: #64748b;    /* Skipped */
+    --level-skip-bg: #f1f5f9;
 }
 
 * {
@@ -35,68 +36,11 @@ body {
     min-height: 100vh;
 }
 
-/* Background Shapes */
-.background-shapes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.6;
-    filter: blur(80px);
-}
-
-.shape-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--primary);
-    top: -100px;
-    left: -100px;
-    animation: float 10s infinite ease-in-out;
-}
-
-.shape-2 {
-    width: 300px;
-    height: 300px;
-    background: var(--secondary);
-    bottom: 10%;
-    right: -50px;
-    animation: float 12s infinite ease-in-out reverse;
-}
-
-.shape-3 {
-    width: 200px;
-    height: 200px;
-    background: var(--accent);
-    top: 40%;
-    left: 30%;
-    animation: float 15s infinite ease-in-out 2s;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(30px, -30px);
-    }
-}
-
 /* Container */
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
 }
 
 header {
@@ -105,34 +49,20 @@ header {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 800;
+    letter-spacing: -0.025em;
     margin-bottom: 10px;
     color: var(--text-main);
 }
 
 .highlight {
     color: var(--primary);
-    position: relative;
-    display: inline-block;
-}
-
-.highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: var(--accent);
-    opacity: 0.4;
-    z-index: -1;
-    border-radius: 4px;
 }
 
 p {
     color: var(--text-light);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
 
 /* Progress Bar */
@@ -141,6 +71,7 @@ p {
     background: var(--card-bg);
     padding: 20px;
     border-radius: var(--radius);
+    border: var(--border);
     box-shadow: var(--shadow);
     display: flex;
     align-items: center;
@@ -156,100 +87,94 @@ p {
 }
 
 .progress-label {
+    font-size: 0.95rem;
     font-weight: 600;
+    color: var(--text-main);
     white-space: nowrap;
 }
 
 .progress-bar-container {
     flex-grow: 1;
-    height: 12px;
-    background: #eee;
-    border-radius: 10px;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
     overflow: hidden;
 }
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--primary);
     width: 0%;
-    transition: width 0.5s ease-out;
-    border-radius: 10px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
 }
 
 .progress-text {
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--primary);
     min-width: 40px;
+    text-align: right;
 }
 
-/* Tabs */
+/* Segmented Tabs Control */
 .subject-tabs {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    background: #f1f5f9;
+    border: var(--border);
+    padding: 4px;
+    border-radius: 8px;
+    max-width: fit-content;
+    margin: 0 auto 30px auto;
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: 8px 20px;
     border: none;
-    border-radius: 50px;
-    background: var(--card-bg);
+    border-radius: 6px;
+    background: transparent;
     color: var(--text-light);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 500;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .tab-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: var(--text-main);
 }
 
 .tab-btn.active {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
-}
-
-.tab-btn[data-subject="chemistry"].active {
-    background: var(--secondary);
-    box-shadow: 0 8px 15px rgba(255, 107, 107, 0.3);
-}
-
-.tab-btn[data-subject="maths"].active {
-    background: var(--accent);
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 15px rgba(78, 205, 196, 0.3);
+    background: var(--card-bg);
+    color: var(--text-main);
+    box-shadow: var(--shadow);
+    font-weight: 600;
 }
 
 /* Chapter List */
 .chapter-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .chapter-card {
     background: var(--card-bg);
-    padding: 20px;
+    padding: 16px 20px;
     border-radius: var(--radius);
+    border: var(--border);
     box-shadow: var(--shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-left: 5px solid transparent;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    border-left: 4px solid transparent;
 }
 
 .chapter-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .chapter-info {
@@ -258,16 +183,17 @@ p {
 
 .chapter-name {
     font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
     color: var(--text-main);
 }
 
 .chapter-status {
-    font-size: 0.85rem;
-    padding: 4px 10px;
-    border-radius: 12px;
-    background: #f0f0f0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f1f5f9;
     display: inline-block;
     color: var(--text-light);
 }
@@ -275,52 +201,58 @@ p {
 /* Familiarity Controls */
 .familiarity-controls {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
 }
 
 .fam-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #eee;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: var(--border);
     background: white;
+    color: var(--text-light);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.15s ease;
     position: relative;
 }
 
 .fam-btn:hover {
-    background: #f8f9fa;
-    transform: scale(1.1);
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--text-main);
 }
 
 .fam-btn::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: -30px;
+    bottom: -32px;
     left: 50%;
-    transform: translateX(-50%);
-    background: #333;
+    transform: translateX(-50%) translateY(4px);
+    background: #0f172a;
     color: white;
     font-size: 0.7rem;
+    font-weight: 400;
     padding: 4px 8px;
     border-radius: 4px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s;
+    transition: opacity 0.15s ease, transform 0.15s ease;
     white-space: nowrap;
+    z-index: 10;
 }
 
 .fam-btn:hover::after {
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
-/* Active States */
+/* Card left border colors per level */
 .chapter-card[data-level="1"] {
     border-left-color: var(--level-1);
 }
@@ -335,33 +267,51 @@ p {
 
 .chapter-card[data-level="-1"] {
     border-left-color: var(--level-skip);
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
+/* Active buttons styling */
 .fam-btn.active {
-    transform: scale(1.1);
     border-color: transparent;
     color: white;
+    font-weight: 600;
 }
 
 .fam-btn[data-val="1"].active {
     background: var(--level-1);
-    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.4);
 }
 
 .fam-btn[data-val="2"].active {
     background: var(--level-2);
-    box-shadow: 0 4px 10px rgba(253, 203, 110, 0.4);
 }
 
 .fam-btn[data-val="3"].active {
     background: var(--level-3);
-    box-shadow: 0 4px 10px rgba(85, 239, 196, 0.4);
 }
 
 .fam-btn[data-val="-1"].active {
     background: var(--level-skip);
-    box-shadow: 0 4px 10px rgba(178, 190, 195, 0.4);
+}
+
+/* Chapter Status Badges */
+.chapter-card[data-level="1"] .chapter-status {
+    background: var(--level-1-bg);
+    color: var(--level-1);
+}
+
+.chapter-card[data-level="2"] .chapter-status {
+    background: var(--level-2-bg);
+    color: var(--level-2);
+}
+
+.chapter-card[data-level="3"] .chapter-status {
+    background: var(--level-3-bg);
+    color: var(--level-3);
+}
+
+.chapter-card[data-level="-1"] .chapter-status {
+    background: var(--level-skip-bg);
+    color: var(--level-skip);
 }
 
 /* Responsive */
@@ -377,6 +327,6 @@ p {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.85rem;
     }
 }
